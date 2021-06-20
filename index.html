@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+   
+         
+</head>
+<body>
+       <!--form-->
+
+       <fieldset  style="border-radius: 10px; ; box-shadow: 5px 5px; background: linear-gradient(white,rgb(151, 165, 21) ); ">  
+        <legend> <h3>  Inscription </h3></legend>
+
+      <form   name="formulaire" method="GET"  action="inscri.html">
+        <!--name-->
+
+          <div>  <label for=nom>Prénom et Nom * :</label>
+            <input type="name" name="name"  id="name" required placeholder="entrez votre nom" > </div>
+
+         <!--cin-->
+        <div> 
+            <label for=CIN>CIN * :</label>
+            <input id= "CIN" style="width: 100px;" id=number name=number type=number placeholder="00000000"
+             width="" maxlength="8" minlength="0" required  > </div>
+
+      <!--mail-->
+        <div> 
+             <label for=email> Adresse mail * :</label>
+             <input id=email name=email type=email required placeholder="exemple@gmail.com" >
+            </div>
+
+            <!--niveau scolaire-->
+        <div>
+               <label for="Niveau Scolaire :"> Niveau Scolaire :</label>  
+
+               <input  id="s" value="Secondaire" type= radio name="rad" checked   >
+                <label for=sec>Secondaire</label> 
+              
+                <input  id="s" value="Universitaire" type= radio name="rad" >
+                <label for=unv>Universitaire</label> 
+              
+               <input  id="s" value="autre" type=radio name="rad" >
+                <label for=autre>Autre</label> 
+            </div>
+                   <!--formation -->
+
+               <div class="item">
+                   <div class="multip">
+               <label style="width: 200px;">  Modules de formation  </label> </div>
+             <div class="mult">
+
+                <select multiple id="fo" multiple="multiple" >
+                        <option id="f" selected value="H"  > HTML5</option>
+                        <option id="f" selected value="c"> CSS3 </option>
+                        <option id="f" selected value="j"> JavaScript</option>
+                        <option id="f" selected value="j">JQuery</option>
+                
+                    </select>
+                    
+                </div>
+    
+            </div>
+        </div>
+         (*) champs obligatoires 
+        
+         <!--button-->
+             
+                 <div style="padding: 20px;" >  <button  type="submit" class="but" onclick="return verif()" >  Envoyer</button>
+                  <button  class="but" onclick="submit" >  Annuler</button> </div>
+
+  
+  </form> 
+</fieldset>
+
+<!---script -->
+
+<script  language="javascript" >
+
+
+  function verif ()
+  {  
+    //**nom prenom
+    a = formulaire.name.value;
+  exp=/^[A-Z]{1}[a-z ]+$/;
+  if(exp.test(a)==false ) 
+ {
+ alert ("Merci de saisir votre nom! la première lettre doit être majuscule! ")
+  return false; 
+  name.classList.add("erreur");}
+//**CIN
+if(formulaire.CIN.value.length !=8 || isNaN(formulaire.CIN.value))
+{alert ("champs CIN obligatoire;veuillez saisir correctement")
+
+    return false;
+    CIN.classList.add("erreur");
+}
+//**email
+  else if ((formulaire.email.value =="") ||(formulaire.email.value.indexOf('@')==1)||
+  (formulaire.email.value.indexOf('.')<0))
+{alert ("champs mail est obligatoire vous devez le remplir correctement !")
+  return false;}
+//**niveau colaire
+else if ((!formulaire.s[0].checked)&&(formulaire.s[1].checked==false)&&(formulaire.s[2].checked==false))
+{
+        alert("choisir votre niveau scolaire!")
+        return false;
+}
+//**formation
+
+
+else if (formulaire.fo.selectedIndex ==0)
+{
+  alert("vous devez choisir  une formation!!")
+  return false;
+  
+  
+}
+return true;
+
+}
+</script>
+
+</body>
+</html>
